@@ -16,6 +16,7 @@ export const useValueStore = (key, defaultValue = null) => {
 
 	useEffect(() => {
 		get(key).then(({ error, value }) => {
+			console.log("useEffect get key?:", { key, value });
 			if (error) {
 				console.error(error);
 				setState({ loading: false, error, value: null });
@@ -30,19 +31,26 @@ export const useValueStore = (key, defaultValue = null) => {
 		setState({ state: "ready", value });
 	};
 
-	return [value, setValue, { loading, error }];
+	return [
+		value === undefined ? defaultValue : value,
+		setValue,
+		{ loading, error },
+	];
 };
 
 const chromeStorage = {
 	get: async key => {
+		console.log("getting key: ", key);
 		return new Promise((resolve, reject) => {
 			chrome.storage.local.get(key, result => {
+				console.log("result", result);
 				if (chrome.runtime.lastError) {
 					resolve({
 						error: chrome.runtime.lastError,
 						value: null,
 					});
 				} else {
+					console.log("successfuly got key:", result);
 					resolve({ value: result[key], error: null });
 				}
 			});
@@ -118,6 +126,7 @@ const localStorage = {
 	},
 };
 const isChromeAvailable = typeof chrome !== "undefined" && chrome.storage;
+console.log("isChromeAvailable", isChromeAvailable);
 export default function StorageContext({ children }) {
 	return (
 		<Context.Provider
