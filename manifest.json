@@ -1,8 +1,8 @@
 {
 	"version": "1.0.0",
 	"manifest_version": 3,
-	"name": "React Chrome Extension",
-	"description": "This is a Chrome extension built with React and TypeScript",
+	"name": "ATF Extended",
+	"description": "An extension for alltheflavors.com",
 	"icons": {
 		"16": "assets/atf-logo.png",
 		"48": "assets/atf-logo.png",
