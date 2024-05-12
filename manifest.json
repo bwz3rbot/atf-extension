@@ -4,13 +4,13 @@
 	"name": "React Chrome Extension",
 	"description": "This is a Chrome extension built with React and TypeScript",
 	"icons": {
-		"16": "assets/logo192.png",
-		"48": "assets/logo192.png",
-		"128": "assets/logo192.png"
+		"16": "assets/atf-logo.png",
+		"48": "assets/atf-logo.png",
+		"128": "assets/atf-logo.png"
 	},
 	"action": {
 		"default_title": "React Chrome Extension",
-		"default_icon": "assets/logo192.png",
+		"default_icon": "assets/atf-logo.png",
 		"default_popup": "popup.html"
 	},
 	"options_ui": {

@@ -38,7 +38,7 @@ export default function ConfigureView() {
 
 	return (
 		<Box>
-			<Heading text={"Hide Users"} />
+			<Heading text={"Hide users from recipes page"} />
 			<form
 				onSubmit={e => {
 					e.preventDefault();
