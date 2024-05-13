@@ -18,6 +18,7 @@ export default function View() {
 				width: "500px",
 				height: "500px",
 				border: "1px solid black",
+				position: "relative",
 			}}
 		>
 			<Tabs
@@ -25,6 +26,10 @@ export default function View() {
 				defaultValue={onTab}
 				value={onTab}
 				onChange={(_, val) => setOnTab(val)}
+				sx={{
+					position: "sticky",
+					top: 0,
+				}}
 			>
 				<Tab label="Home" value="Home" />
 				<Tab label="Hide Mixers" value="Hide Mixers" />

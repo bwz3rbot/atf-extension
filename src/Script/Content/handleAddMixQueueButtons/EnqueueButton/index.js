@@ -1,15 +1,16 @@
 import { getIsInQueue } from "..";
 import { useState } from "react";
 import Button from "@Component/Button";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
+import QueueIcon from "@mui/icons-material/Queue";
+import RemoveFromQueueIcon from "@mui/icons-material/RemoveFromQueue";
 export default function EnqueueButton({ queue, recipe, getQueue }) {
+	console.log("EnqueueButton with recipe: ", recipe);
 	const [isInQueue, setIsInQueue] = useState(getIsInQueue(queue, recipe));
 
 	return (
 		<Button
 			className="enqueueButton"
-			Icon={isInQueue ? <RemoveIcon /> : <AddIcon />}
+			Icon={isInQueue ? <RemoveFromQueueIcon /> : <QueueIcon />}
 			text={isInQueue ? "In Queue" : "Add to Queue"}
 			sx={{
 				backgroundColor: "white",

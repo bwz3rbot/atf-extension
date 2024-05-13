@@ -35,10 +35,13 @@ export default async function handleAddMixQueueButtons() {
 		if (enqueueButtonExists) return;
 		const titleElement = item.querySelector("span.MuiTypography-h4");
 		const linkElement = titleElement.querySelector("a");
+		const authorElement = item.querySelector("span.MuiTypography-body2");
+		console.log("creating recipe object..");
 
 		const recipe = {
 			title: titleElement.innerText,
 			href: linkElement.getAttribute("href"),
+			author: authorElement.innerText.split("by ")[1],
 		};
 
 		const prepend = document.createElement("span");

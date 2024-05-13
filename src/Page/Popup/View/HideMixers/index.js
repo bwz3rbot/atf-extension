@@ -4,7 +4,6 @@ import { useValueStore } from "@/Context/Storage";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useCallback, useState } from "react";
 import Button from "@Component/Button";
-import { ContentPasteOffSharp } from "@mui/icons-material";
 export default function HideMixersView() {
 	const [hiddenUsers, setHiddenUsers, { loading, error }] = useValueStore(
 		"hidden-users",
