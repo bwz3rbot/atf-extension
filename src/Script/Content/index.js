@@ -113,7 +113,10 @@
 					href,
 				});
 				console.log("got response from background script", res);
+				// TODO: update button to show added to queue
 			};
+
+			// TODO: get queue from storage and update the innerText of the button if the recipe is already in the queue
 			addToQueueButton.innerText = "Add to Queue";
 			// find a span with clasName = 'MuiTypography-h4'
 			titleElement.prepend(addToQueueButton);
@@ -134,5 +137,6 @@
 			await handleHideUsers();
 			await handleAddMixQueueButtons();
 		}
+		if (request.message === "hide-users") await handleHideUsers();
 	});
 })();
