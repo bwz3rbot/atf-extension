@@ -2,8 +2,6 @@ import { useValueStore } from "@/Context/Storage";
 
 import { Stack, Box, Paper, Typography } from "@mui/material";
 import Heading from "@Component/Heading";
-
-import Body from "@Component/Body";
 import Link from "@/Component/Link";
 import Button from "@Component/Button";
 import ClearIcon from "@mui/icons-material/Clear";

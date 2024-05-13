@@ -1,6 +1,7 @@
 import handleAddMixQueueButtons from "./handleAddMixQueueButtons";
 import handleHideUsers from "./handleHideUsers";
 import { debounce } from "lodash";
+import waitForLoaded from "./util/waitForLoaded";
 
 console.log("content script loaded...");
 
@@ -20,6 +21,8 @@ chrome.runtime.onMessage.addListener(async function (
 		request,
 		sender,
 	});
+	await waitForLoaded();
+
 	if (request.message === "/recipe") {
 		await handleHideUsersDebounced();
 		await handleAddMixQueueButtonsDebounced();

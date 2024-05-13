@@ -14,6 +14,17 @@ const theme = createTheme({
 		fontFamily: "Inter",
 	},
 	components: {
+		MuiIconButton: {
+			styleOverrides: {
+				root: {
+					color: WHITE,
+					backgroundColor: DARK_BLUE,
+					"&:hover": {
+						backgroundColor: DARK_GREY,
+					},
+				},
+			},
+		},
 		MuiDivider: {
 			styleOverrides: {
 				root: {

@@ -1,36 +1,46 @@
-import { getIsInQueue } from "..";
+import { getIsInQueue, getQueue } from "..";
 import { useState } from "react";
-import Button from "@Component/Button";
 import QueueIcon from "@mui/icons-material/Queue";
 import RemoveFromQueueIcon from "@mui/icons-material/RemoveFromQueue";
-export default function EnqueueButton({ queue, recipe, getQueue }) {
-	console.log("EnqueueButton with recipe: ", recipe);
+import IconButton from "@Component/IconButton";
+import Slide from "@mui/material/Slide";
+
+import { Snackbar } from "@mui/material";
+export default function EnqueueButton({ queue, recipe }) {
 	const [isInQueue, setIsInQueue] = useState(getIsInQueue(queue, recipe));
+	const [toast, setToast] = useState(null);
 
 	return (
-		<Button
-			className="enqueueButton"
-			Icon={isInQueue ? <RemoveFromQueueIcon /> : <QueueIcon />}
-			text={isInQueue ? "In Queue" : "Add to Queue"}
-			sx={{
-				backgroundColor: "white",
-				"&:hover": {
-					backgroundColor: "white",
-				},
-			}}
-			onClick={async () => {
-				let queue = await getQueue();
-				const isInQueue = getIsInQueue(queue, recipe);
-				if (isInQueue) {
-					queue = queue.filter(r => r.href !== recipe.href);
-				} else {
-					queue.push(recipe);
-				}
-				chrome.storage.local.set({ queue }, () => {
-					console.log("added to queue", recipe);
-					setIsInQueue(!isInQueue);
-				});
-			}}
-		/>
+		<>
+			<IconButton
+				Icon={isInQueue ? RemoveFromQueueIcon : QueueIcon}
+				className={"enqueueButton"}
+				onClick={async () => {
+					let queue = await getQueue();
+					const isInQueue = getIsInQueue(queue, recipe);
+					if (isInQueue) {
+						queue = queue.filter(r => r.href !== recipe.href);
+					} else {
+						queue.push(recipe);
+					}
+					chrome.storage.local.set({ queue }, () => {
+						setIsInQueue(!isInQueue);
+					});
+					setToast({
+						message: isInQueue
+							? "Removed from Mix Queue"
+							: "Added to Mix Queue",
+					});
+				}}
+			/>
+			<Snackbar
+				open={toast}
+				autoHideDuration={3000}
+				onClose={() => setToast(null)}
+				TransitionComponent={Slide}
+				message={toast?.message}
+				anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+			/>
+		</>
 	);
 }
