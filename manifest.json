@@ -23,7 +23,8 @@
 	"content_scripts": [
 		{
 			"matches": [
-				"https://alltheflavors.com/*"
+				"https://alltheflavors.com/*",
+				"https://www.alltheflavors.com/*"
 			],
 			"js": [
 				"bundle/script/content.js"

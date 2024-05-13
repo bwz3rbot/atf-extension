@@ -2,29 +2,17 @@ import { Typography, Box } from "@mui/material";
 import Heading from "@Component/Heading";
 import Subheading from "@Component/Subheading";
 import Body from "@Component/Body";
+import LinkButton from "@Component/LinkButton";
 export default function HomeView() {
 	return (
 		<Box>
 			<Heading text="ATF-Extended" />
 			<Subheading>
 				By{" "}
-				<button
-					style={{
-						// make it like an anchor tag
-						background: "none",
-						border: "none",
-						color: "blue",
-						cursor: "pointer",
-					}}
-					onClick={() => {
-						// open the link in the current tab
-						chrome.tabs.create({
-							url: "https://alltheflavors.com/mixers/Frink",
-						});
-					}}
-				>
-					Frink
-				</button>
+				<LinkButton
+					url="https://alltheflavors.com/mixers/Frink"
+					text="Frink"
+				/>
 			</Subheading>
 			<hr />
 			<Body>
@@ -37,6 +25,15 @@ export default function HomeView() {
 			<Body>
 				Send me a message in ATF if you have any feature suggestions or
 				issues to report.
+			</Body>
+
+			<hr />
+			<Body>
+				This is an open-source project. To contribute, visit the{" "}
+				<LinkButton
+					url="https://github.com/bwz3rbot/atf-extension"
+					text="GitHub repository"
+				/>
 			</Body>
 		</Box>
 	);

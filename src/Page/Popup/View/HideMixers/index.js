@@ -3,7 +3,7 @@ import Heading from "@Component/Heading";
 import { useValueStore } from "@/Context/Storage";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useCallback, useEffect } from "react";
-export default function ConfigureView() {
+export default function HideMixersView() {
 	const [hiddenUsers, setHiddenUsers, { loading, error }] = useValueStore(
 		"hidden-users",
 		[]

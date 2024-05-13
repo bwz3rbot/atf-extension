@@ -26,18 +26,34 @@ chrome.runtime.onMessage.addListener(async function (
 			}
 		);
 	}
-	// await sendResponse({
-	// 	message: "Sent response from background",
-	// });
+	if (request.message === "add-to-queue") {
+		// add the recipe to the queue
+		console.log("adding recipe to queue", request);
+		// add to storage
+		const queue = await new Promise(resolve => {
+			chrome.storage.local.get("queue", data => {
+				resolve(data?.queue || []);
+			});
+		});
+		console.log("got queue from storage", queue);
+		const newQueue = [...queue, request];
+		console.log("newQueue", newQueue);
+		chrome.storage.local.set({ queue: newQueue }, () => {
+			console.log("set queue to", newQueue);
+		});
+	}
 });
 
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 	// read changeInfo data and do something with it
 	// like send the new url to contentscripts.js
-	if (changeInfo.url) {
-		console.log("changeInfo.url", changeInfo.url);
+	console.log("changeInfo", changeInfo);
+	console.log("tab", tab);
+	if (!tab.url.includes("alltheflavors")) return;
+	const url = new URL(tab.url);
+	if (url.pathname === "/recipe") {
 		chrome.tabs.sendMessage(tabId, {
-			message: "hide-users",
+			message: "/recipe",
 		});
 	}
 });

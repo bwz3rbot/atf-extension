@@ -2,7 +2,8 @@ import { Box, Tabs, Tab } from "@mui/material";
 import ViewBox from "@Component/Viewbox";
 
 import HomeView from "@PopupPage/View/Home";
-import ConfigureView from "@PopupPage/View/Configure";
+import HideMixersView from "@/Page/Popup/View/HideMixers";
+import QueueView from "@PopupPage/View/Queue";
 import { useValueStore } from "@/Context/Storage";
 export default function View() {
 	const [onTab, setOnTab, { loading, error }] = useValueStore(
@@ -26,11 +27,13 @@ export default function View() {
 				onChange={(_, val) => setOnTab(val)}
 			>
 				<Tab label="Home" value="Home" />
-				<Tab label="Configure" value="Configure" />
+				<Tab label="Hide Mixers" value="Hide Mixers" />
+				<Tab label="Mix Queue" value="Queue" />
 			</Tabs>
 			<ViewBox>
 				{onTab === "Home" && <HomeView />}
-				{onTab === "Configure" && <ConfigureView />}
+				{onTab === "Hide Mixers" && <HideMixersView />}
+				{onTab === "Queue" && <QueueView />}
 			</ViewBox>
 		</Box>
 	);
