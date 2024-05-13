@@ -2,6 +2,7 @@ const path = require("path");
 const HTMLPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const ExtReloader = require("webpack-ext-reloader");
+const StyleLoader = require("css-loader");
 
 const webpack = require("webpack");
 
@@ -42,6 +43,10 @@ module.exports = {
 				test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
 				exclude: /node_modules/,
 				use: ["file-loader?name=[name].[ext]"], // ?name=[name].[ext] is only necessary to preserve the original file name
+			},
+			{
+				test: /\.css$/i,
+				use: ["style-loader", "css-loader"],
 			},
 		],
 	},
@@ -86,7 +91,8 @@ module.exports = {
 		}),
 	],
 	resolve: {
-		extensions: [".tsx", ".ts", ".js"],
+		extensions: [".tsx", ".ts", ".js", ".css"],
+		modules: ["node_modules"],
 		alias: {
 			"@": path.resolve(__dirname, "src/"),
 			"@PopupPage": path.resolve(__dirname, "src/Page/Popup/"),

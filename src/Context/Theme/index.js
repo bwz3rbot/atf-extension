@@ -1,6 +1,6 @@
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
-import { outlinedInputClasses } from "@mui/material/OutlinedInput";
+import "@fontsource/inter";
 
 const WHITE = "#ffffff";
 const WHITE_SECONDARY = "#6D838A";
@@ -10,6 +10,9 @@ const LIGHT_BLUE_SECONDARY = "#05b2bd";
 const LIGHT_GREY = "#6D838A";
 const DARK_GREY = "#233044";
 const theme = createTheme({
+	typography: {
+		fontFamily: "Inter",
+	},
 	components: {
 		MuiDivider: {
 			styleOverrides: {
