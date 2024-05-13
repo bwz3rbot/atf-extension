@@ -9,7 +9,7 @@
 		"128": "assets/atf-logo.png"
 	},
 	"action": {
-		"default_title": "React Chrome Extension",
+		"default_title": "ATF Extended",
 		"default_icon": "assets/atf-logo.png",
 		"default_popup": "popup.html"
 	},
@@ -22,18 +22,9 @@
 	},
 	"content_scripts": [
 		{
-			"matches": [
-				"https://alltheflavors.com/*",
-				"https://www.alltheflavors.com/*"
-			],
-			"js": [
-				"bundle/script/content.js"
-			]
+			"matches": ["https://*.alltheflavors.com/*"],
+			"js": ["bundle/script/content.js"]
 		}
 	],
-	"permissions": [
-		"storage",
-		"tabs",
-		"webNavigation"
-	]
+	"permissions": ["storage", "tabs", "webNavigation"]
 }
