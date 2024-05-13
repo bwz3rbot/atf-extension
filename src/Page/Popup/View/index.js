@@ -3,7 +3,7 @@ import ViewBox from "@Component/Viewbox";
 
 import HomeView from "@PopupPage/View/Home";
 import HideMixersView from "@/Page/Popup/View/HideMixers";
-import QueueView from "@PopupPage/View/Queue";
+import MixQueueView from "@/Page/Popup/View/MixQueue";
 import { useValueStore } from "@/Context/Storage";
 export default function View() {
 	const [onTab, setOnTab, { loading, error }] = useValueStore(
@@ -33,7 +33,7 @@ export default function View() {
 			<ViewBox>
 				{onTab === "Home" && <HomeView />}
 				{onTab === "Hide Mixers" && <HideMixersView />}
-				{onTab === "Queue" && <QueueView />}
+				{onTab === "Queue" && <MixQueueView />}
 			</ViewBox>
 		</Box>
 	);

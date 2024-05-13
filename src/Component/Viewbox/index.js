@@ -5,8 +5,7 @@ export default function ViewBox({ children }) {
 			sx={{
 				width: "100%",
 				height: "100%",
-				// padding: "10px",
-				border: "1px solid green",
+				padding: "10px",
 			}}
 		>
 			{children}

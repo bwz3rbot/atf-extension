@@ -1,19 +1,15 @@
-import { IconButton, Box, Button, OutlinedInput } from "@mui/material";
+import { Box, TextField, Stack, Typography } from "@mui/material";
 import Heading from "@Component/Heading";
 import { useValueStore } from "@/Context/Storage";
 import ClearIcon from "@mui/icons-material/Clear";
-import { useCallback, useEffect } from "react";
+import { useCallback, useState } from "react";
+import Button from "@Component/Button";
+import { ContentPasteOffSharp } from "@mui/icons-material";
 export default function HideMixersView() {
 	const [hiddenUsers, setHiddenUsers, { loading, error }] = useValueStore(
 		"hidden-users",
 		[]
 	);
-	console.log("useValueStore['hiddenUsers']", {
-		hiddenUsers,
-		loading,
-
-		error,
-	});
 
 	const hideUser = useCallback(
 		user => {
@@ -35,35 +31,51 @@ export default function HideMixersView() {
 			users,
 		});
 	};
+	const [inputValue, setInputValue] = useState("");
 
 	return (
 		<Box>
 			<Heading text={"Hide users from recipes page"} />
-			<form
-				onSubmit={e => {
-					e.preventDefault();
-					if (e.target.name.value === "") return;
-					hideUser(e.target.name.value);
-				}}
-			>
-				<OutlinedInput size="small" type="text" name="name" />
-			</form>
-			<Button onClick={() => sendHideUsersMessage(hiddenUsers)}>
-				Hide Users
-			</Button>
-			<Box>
-				{hiddenUsers.map(user => {
-					console.log("user", user);
-					return (
-						<Box key={user}>
-							{user}
-							<Button onClick={() => unhideUser(user)}>
-								Remove
-							</Button>
-						</Box>
-					);
-				})}
-			</Box>
+			<Stack spacing={2}>
+				<form
+					onSubmit={e => {
+						e.preventDefault();
+						if (e.target.name.value === "") return;
+						hideUser(e.target.name.value);
+						setInputValue("");
+					}}
+				>
+					<TextField
+						value={inputValue}
+						onInput={e => setInputValue(e.target.value)}
+						label="User name"
+						size="small"
+						type="text"
+						name="name"
+					/>
+				</form>
+
+				<Box>
+					{hiddenUsers.map(user => {
+						return (
+							<Box key={user}>
+								<Button
+									text={<ClearIcon />}
+									onClick={() => unhideUser(user)}
+								/>
+								<Typography
+									sx={{
+										display: "inline",
+										marginLeft: "10px",
+									}}
+								>
+									{user}
+								</Typography>
+							</Box>
+						);
+					})}
+				</Box>
+			</Stack>
 		</Box>
 	);
 }

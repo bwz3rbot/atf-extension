@@ -1,11 +1,11 @@
-export default function LinkButton({ url, text }) {
+export default function Link({ url, text }) {
 	return (
 		<button
 			style={{
 				// make it like an anchor tag
 				background: "none",
 				border: "none",
-				color: "blue",
+				color: "#1CE0FE",
 				cursor: "pointer",
 			}}
 			onClick={() => {
