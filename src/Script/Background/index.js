@@ -1,5 +1,6 @@
 // listen for messages from the content script
 console.log("background script running");
+
 chrome.runtime.onMessage.addListener(async function (
 	request,
 	sender,
@@ -13,6 +14,7 @@ chrome.runtime.onMessage.addListener(async function (
 		sendResponse,
 		other,
 	});
+
 	if (request.message === "hide-users") {
 		chrome.tabs.query(
 			{ active: true, currentWindow: true },
