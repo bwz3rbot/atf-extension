@@ -1,8 +1,5 @@
-// TODO: install react here for state management
-// send message to the background script
 import handleAddMixQueueButtons from "./handleAddMixQueueButtons";
 import handleHideUsers from "./handleHideUsers";
-console.log("content script loaded...");
 // listen from message from popup
 chrome.runtime.onMessage.addListener(async function (
 	request,
