@@ -1,7 +1,7 @@
-import { Box } from "@mui/material";
+import { Paper } from "@mui/material";
 export default function ViewBox({ children }) {
 	return (
-		<Box
+		<Paper
 			sx={{
 				width: "100%",
 				height: "100%",
@@ -9,6 +9,6 @@ export default function ViewBox({ children }) {
 			}}
 		>
 			{children}
-		</Box>
+		</Paper>
 	);
 }
