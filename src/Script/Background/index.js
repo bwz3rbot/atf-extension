@@ -44,6 +44,19 @@ chrome.runtime.onMessage.addListener(async function (
 	}
 });
 
+// when the tab first loads, send a message to the content script
+chrome.tabs.onActivated.addListener(function (activeInfo) {
+	console.log("tab activated", activeInfo);
+	chrome.tabs.get(activeInfo.tabId, function (tab) {
+		console.log("tab", tab);
+		if (!tab.url.includes("alltheflavors")) return;
+		const url = new URL(tab.url);
+		chrome.tabs.sendMessage(tab.id, {
+			message: { pathname: url.pathname },
+		});
+	});
+});
+
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 	// read changeInfo data and do something with it
 	// like send the new url to contentscripts.js
@@ -51,9 +64,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 	console.log("tab", tab);
 	if (!tab.url.includes("alltheflavors")) return;
 	const url = new URL(tab.url);
-	if (url.pathname === "/recipe") {
-		chrome.tabs.sendMessage(tabId, {
-			message: "/recipe",
-		});
-	}
+	chrome.tabs.sendMessage(tabId, {
+		message: { pathname: url.pathname },
+	});
 });

@@ -5,7 +5,7 @@ import Heading from "@Component/Heading";
 import Link from "@/Component/Link";
 import Button from "@Component/Button";
 import ClearIcon from "@mui/icons-material/Clear";
-
+import QueueIcon from "@mui/icons-material/Queue";
 export default function MixQueueView() {
 	const [queue, setQueue, { loading, error }] = useValueStore("queue", []);
 	return (
@@ -18,6 +18,25 @@ export default function MixQueueView() {
 			<Heading text="Mix Queue" />
 
 			<Stack spacing={1}>
+				{!queue.length && (
+					<>
+						<Typography
+							sx={{
+								margin: "16px",
+							}}
+							variant="body1"
+						>
+							No mixes in queue.
+							<br /> Go to{" "}
+							<Link
+								text="the recipes page"
+								url="https://alltheflavors.com/recipes"
+							/>
+							and click the <QueueIcon /> button on a recipe to
+							add it to the queue.
+						</Typography>
+					</>
+				)}
 				{queue.map((recipe, index) => (
 					<Box key={index}>
 						<Stack direction={"row"} spacing={1}>

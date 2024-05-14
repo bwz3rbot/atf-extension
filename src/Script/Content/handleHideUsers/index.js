@@ -3,12 +3,6 @@ import findRecipeList from "../util/findRecipeList";
 import getUsers from "../util/getUsers";
 
 export default async function handleHideUsers() {
-	const url = new URL(window.location.href);
-
-	if (url.pathname !== "/recipe") {
-		console.log("can't handleHideUsers. not on recipe page");
-		return;
-	}
 	const recipeList = await findRecipeList();
 	const users = await getUsers();
 

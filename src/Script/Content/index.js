@@ -23,9 +23,12 @@ chrome.runtime.onMessage.addListener(async function (
 	});
 	await waitForLoaded();
 
-	if (request.message === "/recipe") {
-		await handleHideUsersDebounced();
-		await handleAddMixQueueButtonsDebounced();
+	switch (request.message?.pathname) {
+		case "/recipe":
+			await handleHideUsersDebounced();
+			await handleAddMixQueueButtonsDebounced();
+			break;
 	}
+
 	if (request.message === "hide-users") await handleHideUsersDebounced();
 });

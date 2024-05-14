@@ -7,15 +7,7 @@ export const getQueue = async () =>
 			resolve(res.queue || []);
 		});
 	});
-export const getIsInQueue = (queue, recipe) =>
-	queue.some(r => r.href === recipe.href);
-
 export default async function handleAddMixQueueButtons() {
-	const url = new URL(window.location.href);
-	if (url.pathname !== "/recipe") {
-		console.log("can't handleAddMixQueueButtons. not on recipe page");
-		return;
-	}
 	const recipeList = await findRecipeList();
 	const queue = await getQueue();
 	for (const item of recipeList) {
@@ -39,6 +31,9 @@ export default async function handleAddMixQueueButtons() {
 		titleElement.style.flexDirection = "row";
 		titleElement.style.alignItems = "center";
 
-		injectReactComponent(EnqueueButton, { queue, recipe }, prependElement);
+		injectReactComponent(
+			prependElement,
+			<EnqueueButton queue={queue} recipe={recipe} />
+		);
 	}
 }

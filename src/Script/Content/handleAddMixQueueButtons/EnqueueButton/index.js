@@ -1,11 +1,12 @@
-import { getIsInQueue, getQueue } from "..";
+import { getQueue } from "..";
 import { useState } from "react";
 import QueueIcon from "@mui/icons-material/Queue";
 import RemoveFromQueueIcon from "@mui/icons-material/RemoveFromQueue";
 import IconButton from "@Component/IconButton";
 import Slide from "@mui/material/Slide";
-
 import { Snackbar } from "@mui/material";
+export const getIsInQueue = (queue, recipe) =>
+	queue.some(r => r.href === recipe.href);
 export default function EnqueueButton({ queue, recipe }) {
 	const [isInQueue, setIsInQueue] = useState(getIsInQueue(queue, recipe));
 	const [toast, setToast] = useState(null);
