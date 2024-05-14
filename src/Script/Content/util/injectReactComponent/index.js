@@ -1,5 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-export default function injectReactComponent(element, ReactComponent) {
-	const root = ReactDOM.createRoot(element).render(ReactComponent);
+export default function injectReactComponent(rootEl, ReactComponent) {
+	ReactDOM.createRoot(rootEl).render(ReactComponent);
 }

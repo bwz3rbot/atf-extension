@@ -35,7 +35,7 @@ export default function EnqueueButton({ queue, recipe }) {
 				}}
 			/>
 			<Snackbar
-				open={toast}
+				open={!!toast}
 				autoHideDuration={3000}
 				onClose={() => setToast(null)}
 				TransitionComponent={Slide}
