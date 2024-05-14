@@ -1,6 +1,5 @@
 // listen for messages from the content script
 console.log("background script running");
-
 chrome.webNavigation.onDOMContentLoaded.addListener(function (details) {
 	if (!details.url.includes("alltheflavors")) return;
 	const url = new URL(details.url);

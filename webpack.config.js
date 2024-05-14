@@ -81,12 +81,13 @@ module.exports = {
 			React: "react",
 		}),
 		new ExtReloader({
+			manifest: path.resolve(__dirname, "manifest.json"),
 			port,
-			entries: {
-				contentScript: "content",
-				background: "background",
-				extensionPage: ["options", "popup"],
-			},
+			// entries: {
+			// 	contentScript: "content",
+			// 	background: "background",
+			// 	extensionPage: ["options", "popup"],
+			// },
 		}),
 	],
 	resolve: {

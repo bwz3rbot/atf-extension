@@ -31,11 +31,13 @@ export default async function handleAddMixQueueButtons() {
 
 		const prependElement = document.createElement("span");
 		prependElement.innerText = " ";
-		titleElement.prepend(prependElement);
 
-		titleElement.style.display = "flex";
-		titleElement.style.flexDirection = "row";
-		titleElement.style.alignItems = "center";
+		const titleParentEl = titleElement.parentElement;
+		titleParentEl.insertBefore(prependElement, titleParentEl.firstChild);
+
+		titleParentEl.style.display = "flex";
+		titleParentEl.style.flexDirection = "row";
+		titleParentEl.style.alignItems = "center";
 
 		injectReactComponent(
 			prependElement,
