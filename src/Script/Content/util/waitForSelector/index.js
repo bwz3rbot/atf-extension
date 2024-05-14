@@ -3,6 +3,7 @@ export default async function waitForSelector({
 	rootElement = document,
 	selector,
 }) {
+	// TODO: fix this. it needs to return element immediately if it's already there
 	return new Promise((resolve, reject) => {
 		const interval = setInterval(() => {
 			const element = rootElement.querySelector(selector);

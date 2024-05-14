@@ -1,7 +1,6 @@
 import findRecipeList from "../util/findRecipeList";
 import injectReactComponent from "../util/injectReactComponent";
 import EnqueueButton from "./EnqueueButton";
-import waitForSelector from "../util/waitForSelector";
 import sleep from "../util/sleep";
 export const getQueue = async () =>
 	new Promise(resolve => {
@@ -21,10 +20,7 @@ export default async function handleAddMixQueueButtons() {
 		const enqueueButtonExists = item.querySelector(".enqueueButton");
 		if (enqueueButtonExists) return;
 		const titleElement = item.querySelector("span.MuiTypography-h4");
-		const linkElement = await waitForSelector({
-			selector: "a",
-			rootElement: titleElement,
-		});
+		const linkElement = item.querySelector("a");
 		const authorElement = item.querySelector("span.MuiTypography-body2");
 
 		const recipe = {
