@@ -6,7 +6,11 @@ import Link from "@/Component/Link";
 import { version } from "../../../../../manifest.json";
 export default function HomeView() {
 	return (
-		<Box>
+		<Box
+			sx={{
+				padding: "10px",
+			}}
+		>
 			<Box
 				sx={{
 					display: "flex",
@@ -33,7 +37,8 @@ export default function HomeView() {
 			</Subheading>
 			<Divider />
 			<Body>
-				A chrome extension to extend the functionality of the ATF website.
+				A chrome extension to extend the functionality of the ATF
+				website.
 			</Body>
 			<Divider />
 			<Body>

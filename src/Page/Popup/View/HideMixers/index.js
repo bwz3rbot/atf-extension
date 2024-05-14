@@ -33,7 +33,11 @@ export default function HideMixersView() {
 	const [inputValue, setInputValue] = useState("");
 
 	return (
-		<Box>
+		<Box
+			sx={{
+				padding: "10px",
+			}}
+		>
 			<Heading text={"Hide users from recipes page"} />
 			<Stack spacing={2}>
 				<form

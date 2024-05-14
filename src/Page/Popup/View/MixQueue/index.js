@@ -11,6 +11,7 @@ export default function MixQueueView() {
 	return (
 		<Paper
 			sx={{
+				padding: "10px",
 				height: "100%",
 				overflowY: "scroll",
 			}}
