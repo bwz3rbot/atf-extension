@@ -3,12 +3,15 @@ import { CssBaseline } from "@mui/material";
 import "@fontsource/inter";
 
 const WHITE = "#ffffff";
-const WHITE_SECONDARY = "#6D838A";
+const WHITE_SECONDARY = "rgba(255, 255, 255, 0.4)";
 const DARK_BLUE = "#1B2635";
 const LIGHT_BLUE = "#1CE0FE";
 const LIGHT_BLUE_SECONDARY = "#05b2bd";
 const LIGHT_GREY = "#6D838A";
 const DARK_GREY = "#233044";
+
+const BUTTON_BLUE_SELECTED = "#407AD6";
+const BUTTON_BLUE_UNSELECTED = "#2C5595";
 const theme = createTheme({
 	typography: {
 		fontFamily: "Inter",
@@ -68,15 +71,15 @@ const theme = createTheme({
 			styleOverrides: {
 				root: {
 					"&.Mui-selected": {
-						backgroundColor: "#407AD6",
+						backgroundColor: DARK_GREY,
 						color: WHITE,
 					},
 					"&:not(.Mui-selected)": {
-						backgroundColor: "#2C5595",
+						backgroundColor: DARK_BLUE,
 						color: WHITE_SECONDARY,
 					},
 					"&:hover": {
-						backgroundColor: "#407AD6",
+						backgroundColor: DARK_GREY,
 						color: WHITE,
 					},
 
