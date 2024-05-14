@@ -3,7 +3,7 @@ import Heading from "@Component/Heading";
 import Subheading from "@Component/Subheading";
 import Body from "@Component/Body";
 import Link from "@/Component/Link";
-
+import { version } from "../../../../../manifest.json";
 export default function HomeView() {
 	return (
 		<Box>
@@ -17,11 +17,12 @@ export default function HomeView() {
 				<img
 					style={{
 						marginBottom: "10px",
+						marginRight: "10px",
 					}}
 					src="./assets/dropper.svg"
 					alt="ATF-Extended"
 				/>
-				<Heading text="ATF Extended" />
+				<Heading text={`ATF Extended v${version}`} />
 			</Box>
 			<Subheading>
 				By{" "}
@@ -32,13 +33,12 @@ export default function HomeView() {
 			</Subheading>
 			<Divider />
 			<Body>
-				This is a chrome extension that extends the functionality of the
-				ATF website.
+				A chrome extension to extend the functionality of the ATF website.
 			</Body>
 			<Divider />
 			<Body>
-				Send me a message in ATF if you have any feature suggestions or
-				issues to report.
+				Send a message in ATF chat if you have any feature suggestions
+				or issues to report.
 			</Body>
 
 			<Divider />
