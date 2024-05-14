@@ -30,7 +30,7 @@ export default function MixQueueView() {
 							<br /> Go to{" "}
 							<Link
 								text="the recipes page"
-								url="https://alltheflavors.com/recipes"
+								url="https://alltheflavors.com/recipe"
 							/>
 							and click the <QueueIcon /> button on a recipe to
 							add it to the queue.

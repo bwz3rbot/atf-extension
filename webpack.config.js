@@ -2,7 +2,6 @@ const path = require("path");
 const HTMLPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const ExtReloader = require("webpack-ext-reloader");
-const StyleLoader = require("css-loader");
 
 const webpack = require("webpack");
 

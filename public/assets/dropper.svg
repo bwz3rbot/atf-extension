@@ -1,0 +1,80 @@
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="23.521439"
+   height="32.424015"
+   viewBox="0 0 23.521439 32.424015"
+   version="1.1"
+   id="svg84"
+   sodipodi:docname="ATF_Dropper.svg"
+   inkscape:version="1.0.2 (e86c8708, 2021-01-15)">
+  <metadata
+     id="metadata90">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Logo 1</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs88" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1680"
+     inkscape:window-height="911"
+     id="namedview86"
+     showgrid="false"
+     inkscape:zoom="5.0552995"
+     inkscape:cx="10.229659"
+     inkscape:cy="15.700165"
+     inkscape:window-x="0"
+     inkscape:window-y="23"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg84"
+     inkscape:document-rotation="0" />
+  <title
+     id="title69">Logo 1</title>
+  <g
+     id="Group-6"
+     transform="rotate(33,15.526044,23.193016)"
+     style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1">
+    <path
+       d="m 13.083878,21.551588 c 0.0061,3.594052 0.0091,6.512392 0.0091,8.75502 -0.443631,1.77218 -3.1181226,2.451924 -3.1181226,3.686838 C 9.0312258,35.774528 8.4123428,36.663377 8.1182133,36.659991 7.851511,36.656796 7.3175791,35.834581 6.5164177,34.193344 6.4084071,32.95843 3.7649776,32.072922 3.3205852,30.297701 3.2834559,29.251756 3.2687323,28.314142 3.2672772,27.006544 l 9.0443768,-5.873448 c 0.231601,-0.15029 0.541207,-0.08448 0.691576,0.147069 0.05248,0.08081 0.08048,0.175067 0.08065,0.271423 z"
+       id="Rectangle"
+       fill="#fe1c6f" />
+    <path
+       d="m 3.4585378,13.665972 h 9.6232492 c 0.276142,0 0.5,0.223858 0.5,0.5 0,4.701491 0,9.402983 0,14.104474 -0.482256,3.14748 -1.135206,2.990594 -2.411765,4.654792 -1.2765581,1.664198 -0.892739,4.483277 -2.8882457,4.483277 -1.9955065,0 -1.5353778,-2.692713 -2.9114738,-4.483277 -1.376096,-1.790564 -1.9286805,-1.517729 -2.4117647,-4.670611 0,-4.696218 0,-9.392437 0,-14.088655 0,-0.276142 0.2238576,-0.5 0.5,-0.5 z"
+       id="path72"
+       stroke="#FFFFFF"
+       stroke-width="2" />
+    <rect
+       id="rect74"
+       fill="#FFFFFF"
+       x="0.97112572"
+       y="10.642574"
+       width="14.291939"
+       height="5.314815"
+       rx="1.983871" />
+    <path
+       d="M 4.3597932,0.85383955 H 12.62451 c 0,2.56099075 0.414791,8.35185185 -4.1180448,8.35185185 -4.5328355,0 -4.146672,-6.1942932 -4.146672,-8.35185185 z"
+       id="path76"
+       fill="#FFFFFF"
+       transform="matrix(1,0,0,-1,0,10.05953)" />
+  </g>
+</svg>

@@ -1,12 +1,28 @@
-import { Typography, Box, Divider } from "@mui/material";
+import { Box, Divider } from "@mui/material";
 import Heading from "@Component/Heading";
 import Subheading from "@Component/Subheading";
 import Body from "@Component/Body";
 import Link from "@/Component/Link";
+
 export default function HomeView() {
 	return (
 		<Box>
-			<Heading text="ATF-Extended" />
+			<Box
+				sx={{
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "flex-start",
+				}}
+			>
+				<img
+					style={{
+						marginBottom: "10px",
+					}}
+					src="./assets/dropper.svg"
+					alt="ATF-Extended"
+				/>
+				<Heading text="ATF Extended" />
+			</Box>
 			<Subheading>
 				By{" "}
 				<Link
