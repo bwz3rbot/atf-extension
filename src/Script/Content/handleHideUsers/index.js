@@ -16,7 +16,6 @@ export default async function handleHideUsers() {
 		const shouldHide = users.includes(authorName);
 		if (!shouldHide) continue;
 		// hide the element
-		console.log("hiding recipe from author: ", authorName);
 		item.style.display = "none";
 	}
 }

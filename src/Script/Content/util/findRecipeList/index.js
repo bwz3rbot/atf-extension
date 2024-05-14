@@ -1,5 +1,4 @@
 export default async function findRecipeList() {
-	console.log("finding recipe list...");
 	const _findRecipeList = () => {
 		const ul = document.querySelectorAll("ul");
 		const recipeList = ul[1];

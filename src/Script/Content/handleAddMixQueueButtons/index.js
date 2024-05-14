@@ -1,6 +1,8 @@
 import findRecipeList from "../util/findRecipeList";
 import injectReactComponent from "../util/injectReactComponent";
 import EnqueueButton from "./EnqueueButton";
+import waitForSelector from "../util/waitForSelector";
+import sleep from "../util/sleep";
 export const getQueue = async () =>
 	new Promise(resolve => {
 		chrome.storage.local.get("queue", res => {
@@ -10,11 +12,19 @@ export const getQueue = async () =>
 export default async function handleAddMixQueueButtons() {
 	const recipeList = await findRecipeList();
 	const queue = await getQueue();
+	/* 
+	attempt to fix:
+	DOMException: Failed to execute 'insertBefore' on 'Node': The node before which the new node is to be inserted is not a child of this node.
+	*/
+	await sleep(1000);
 	for (const item of recipeList) {
 		const enqueueButtonExists = item.querySelector(".enqueueButton");
 		if (enqueueButtonExists) return;
 		const titleElement = item.querySelector("span.MuiTypography-h4");
-		const linkElement = titleElement.querySelector("a");
+		const linkElement = await waitForSelector({
+			selector: "a",
+			rootElement: titleElement,
+		});
 		const authorElement = item.querySelector("span.MuiTypography-body2");
 
 		const recipe = {
