@@ -1,14 +1,12 @@
-const loaded = await new Promise(resolve => {
-	window.addEventListener("load", resolve);
-});
-
-const waitForLoaded = async () => {
-	do {
-		await new Promise(resolve => {
-			setTimeout(resolve, 1000);
+export default async function waitForLoaded() {
+	return new Promise(resolve => {
+		window.addEventListener("load", () => {
+			console.log("loaded");
+			resolve(true);
 		});
-	} while (!loaded);
-	return true;
-};
-
-export default waitForLoaded;
+		if (document.readyState === "complete") {
+			console.log("readyState complete");
+			resolve(true);
+		}
+	});
+}
