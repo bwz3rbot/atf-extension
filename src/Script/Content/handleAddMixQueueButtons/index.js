@@ -18,7 +18,7 @@ export default async function handleAddMixQueueButtons() {
 	await sleep(1000);
 	for (const item of await findRecipeList()) {
 		const enqueueButtonExists = item.querySelector(".enqueueButton");
-		if (enqueueButtonExists) return;
+		if (enqueueButtonExists) continue;
 		const titleElement = item.querySelector("span.MuiTypography-h4");
 		const linkElement = item.querySelector("a");
 		const authorElement = item.querySelector("span.MuiTypography-body2");
