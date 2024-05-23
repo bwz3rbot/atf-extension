@@ -3,8 +3,10 @@ import findRecipeList from "../util/findRecipeList";
 import getUsers from "../util/getUsers";
 
 export default async function handleHideUsers() {
-	const recipeList = await findRecipeList();
 	const users = await getUsers();
+	if (!users.length) return;
+	console.log("handleHideUsers");
+	const recipeList = await findRecipeList();
 
 	// find the author by finding the first span with classname = 'MuiTypography-body2'
 	for (const item of recipeList) {

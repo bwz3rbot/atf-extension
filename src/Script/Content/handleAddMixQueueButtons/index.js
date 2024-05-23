@@ -1,7 +1,6 @@
 import findRecipeList from "../util/findRecipeList";
 import injectReactComponent from "../util/injectReactComponent";
 import EnqueueButton from "./EnqueueButton";
-import sleep from "../util/sleep";
 export const getQueue = async () =>
 	new Promise(resolve => {
 		chrome.storage.local.get("queue", res => {
@@ -9,6 +8,7 @@ export const getQueue = async () =>
 		});
 	});
 export default async function handleAddMixQueueButtons() {
+	console.log("handleAddMixQueueButtons");
 	const recipeList = await findRecipeList();
 	const queue = await getQueue();
 
