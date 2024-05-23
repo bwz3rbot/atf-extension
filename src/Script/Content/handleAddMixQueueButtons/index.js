@@ -9,14 +9,10 @@ export const getQueue = async () =>
 		});
 	});
 export default async function handleAddMixQueueButtons() {
-	await findRecipeList();
+	const recipeList = await findRecipeList();
 	const queue = await getQueue();
-	/* 
-	attempt to fix:
-	DOMException: Failed to execute 'insertBefore' on 'Node': The node before which the new node is to be inserted is not a child of this node.
-	*/
-	await sleep(1000);
-	for (const item of await findRecipeList()) {
+
+	for (const item of recipeList) {
 		const enqueueButtonExists = item.querySelector(".enqueueButton");
 		if (enqueueButtonExists) continue;
 		const titleElement = item.querySelector("span.MuiTypography-h4");
@@ -30,7 +26,6 @@ export default async function handleAddMixQueueButtons() {
 		};
 
 		const prependElement = document.createElement("span");
-		prependElement.innerText = " ";
 
 		const titleParentEl = titleElement.parentElement;
 		titleParentEl.insertBefore(prependElement, titleParentEl.firstChild);

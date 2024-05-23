@@ -7,6 +7,7 @@ export default async function waitForSelector({
 	return new Promise((resolve, reject) => {
 		const interval = setInterval(() => {
 			const element = rootElement.querySelector(selector);
+
 			if (element) {
 				clearInterval(interval);
 				resolve(element);

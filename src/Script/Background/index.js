@@ -39,12 +39,12 @@ chrome.webNavigation.onDOMContentLoaded.addListener(function (details) {
 
 	chrome.tabs.onCreated.addListener(function (tab) {
 		if (!tab.url.includes("alltheflavors")) return;
-		const url = new URL(tab.url);
+
 		console.log("tab created", tab);
 
 		chrome.tabs
 			.sendMessage(tab.id, {
-				message: { pathname: url.pathname },
+				url: tab.url,
 			})
 			.catch(err => {
 				console.error("error sending message", err);
@@ -56,10 +56,9 @@ chrome.webNavigation.onDOMContentLoaded.addListener(function (details) {
 		if (tab.status !== "complete") return;
 		console.log("changeInfo", changeInfo);
 		console.log("tab", tab);
-		const url = new URL(tab.url);
 		chrome.tabs
 			.sendMessage(tabId, {
-				message: { pathname: url.pathname },
+				url: tab.url,
 			})
 			.catch(err => {
 				console.error("error sending message", err);

@@ -13,10 +13,15 @@ _______  ______    ___   __    _  ___   _
 `;
 console.log(text);
 console.log(`https://alltheflavors.com/mixers/Frink`);
-const handleHideUsersDebounced = debounce(handleHideUsers, 1000);
+const handleHideUsersDebounced = debounce(handleHideUsers, 1000, {
+	trailing: true,
+});
 const handleAddMixQueueButtonsDebounced = debounce(
 	handleAddMixQueueButtons,
-	1000
+	1000,
+	{
+		trailing: true,
+	}
 );
 
 // listen from message from popup
@@ -26,11 +31,15 @@ chrome.runtime.onMessage.addListener(async function (
 	sendResponse
 ) {
 	await waitForLoaded();
-	switch (request.message?.pathname) {
-		case "/recipe":
-			await handleHideUsersDebounced();
-			await handleAddMixQueueButtonsDebounced();
-			break;
+	if (request.url) {
+		const url = new URL(request.url);
+		switch (url.pathname) {
+			case "/recipe":
+				await handleHideUsersDebounced();
+				await handleAddMixQueueButtonsDebounced();
+				break;
+		}
 	}
+
 	if (request.message === "hide-users") await handleHideUsersDebounced();
 });
