@@ -1,7 +1,6 @@
 import handleAddMixQueueButtons from "./handleAddMixQueueButtons";
 import handleHideUsers from "./handleHideUsers";
 import { debounce } from "lodash";
-import waitForLoaded from "./util/waitForLoaded";
 const text = `
 _______  ______    ___   __    _  ___   _ 
 |       ||    _ |  |   | |  |  | ||   | | |
@@ -13,6 +12,7 @@ _______  ______    ___   __    _  ___   _
 `;
 console.log(text);
 console.log(`https://alltheflavors.com/mixers/Frink`);
+
 const handleHideUsersDebounced = debounce(handleHideUsers, 1000, {
 	trailing: true,
 });
@@ -24,22 +24,26 @@ const handleAddMixQueueButtonsDebounced = debounce(
 	}
 );
 
-// listen from message from popup
-chrome.runtime.onMessage.addListener(async function (
-	request,
-	sender,
-	sendResponse
-) {
-	await waitForLoaded();
-	if (request.url) {
-		const url = new URL(request.url);
-		switch (url.pathname) {
-			case "/recipe":
-				await handleHideUsersDebounced();
-				await handleAddMixQueueButtonsDebounced();
-				break;
-		}
+const handleURL = async _url => {
+	const url = new URL(_url);
+	switch (url.pathname) {
+		case "/recipe":
+			await handleHideUsersDebounced();
+			await handleAddMixQueueButtonsDebounced();
+			break;
 	}
-
-	if (request.message === "hide-users") await handleHideUsersDebounced();
+};
+const handleURLDebounced = debounce(handleURL, 1000, {
+	trailing: true,
+});
+window.addEventListener("load", async () => {
+	handleURLDebounced(window.location.href);
+	chrome.runtime.onMessage.addListener(async function (
+		request,
+		sender,
+		sendResponse
+	) {
+		if (request.url) handleURLDebounced(request.url);
+		if (request.message === "hide-users") handleHideUsersDebounced();
+	});
 });
