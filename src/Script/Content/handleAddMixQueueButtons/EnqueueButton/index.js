@@ -14,6 +14,7 @@ export default function EnqueueButton({ queue, recipe }) {
 	return (
 		<>
 			<IconButton
+				title={isInQueue ? "Remove from Mix Queue" : "Add to Mix Queue"}
 				Icon={isInQueue ? RemoveFromQueueIcon : QueueIcon}
 				className={"enqueueButton"}
 				onClick={async () => {
