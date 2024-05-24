@@ -8,7 +8,6 @@ export const getQueue = async () =>
 		});
 	});
 export default async function handleAddMixQueueButtons() {
-	console.log("handleAddMixQueueButtons");
 	const recipeList = await findRecipeList();
 	const queue = await getQueue();
 
