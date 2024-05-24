@@ -25,6 +25,7 @@ const handleAddMixQueueButtonsDebounced = debounce(
 );
 
 const handleURL = async _url => {
+	console.log("handleURL", _url);
 	const url = new URL(_url);
 	switch (url.pathname) {
 		case "/recipe":

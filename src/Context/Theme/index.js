@@ -17,6 +17,14 @@ const theme = createTheme({
 		fontFamily: "Inter",
 	},
 	components: {
+		// target MuiCardHeader subheader
+		MuiCardHeader: {
+			styleOverrides: {
+				subheader: {
+					color: WHITE_SECONDARY,
+				},
+			},
+		},
 		MuiIconButton: {
 			styleOverrides: {
 				root: {
