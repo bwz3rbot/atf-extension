@@ -29,9 +29,9 @@ const theme = createTheme({
 			styleOverrides: {
 				root: {
 					color: WHITE,
-					backgroundColor: DARK_BLUE,
+					backgroundColor: DARK_GREY,
 					"&:hover": {
-						backgroundColor: DARK_GREY,
+						backgroundColor: DARK_BLUE,
 					},
 				},
 			},
