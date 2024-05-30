@@ -1,6 +1,8 @@
 import handleAddMixQueueButtons from "./handleAddMixQueueButtons";
 import handleHideUsers from "./handleHideUsers";
 import { debounce } from "lodash";
+import routeChangeListener from "./routeChangeListener";
+
 const text = `
 _______  ______    ___   __    _  ___   _ 
 |       ||    _ |  |   | |  |  | ||   | | |
@@ -24,27 +26,38 @@ const handleAddMixQueueButtonsDebounced = debounce(
 	}
 );
 
-const handleURL = async _url => {
-	console.log("handleURL", _url);
-	const url = new URL(_url);
-	switch (url.pathname) {
+const handleRoutechange = async location => {
+	switch (location.pathname) {
 		case "/recipe":
+		case "/recipe/flavorSearch":
+		case "/user/recipes":
 			await handleHideUsersDebounced();
 			await handleAddMixQueueButtonsDebounced();
 			break;
 	}
+
+	// mixer page
+	if (/\/mixers\/[a-zA-Z0-9]+/.test(location.pathname)) {
+		await handleAddMixQueueButtonsDebounced();
+	}
+
+	// flavor page
+	if (/\/flavor\/[a-zA-Z0-9]+/.test(location.pathname)) {
+		await handleAddMixQueueButtonsDebounced();
+		await handleHideUsersDebounced();
+	}
 };
-const handleURLDebounced = debounce(handleURL, 1000, {
+const handleRouteChangeDebounced = debounce(handleRoutechange, 1000, {
 	trailing: true,
 });
-window.addEventListener("load", async () => {
-	handleURLDebounced(window.location.href);
+window.addEventListener("load", () => {
+	handleRouteChangeDebounced(location);
+	routeChangeListener(() => handleRouteChangeDebounced(location));
 	chrome.runtime.onMessage.addListener(async function (
 		request,
 		sender,
 		sendResponse
 	) {
-		if (request.url) handleURLDebounced(request.url);
 		if (request.message === "hide-users") handleHideUsersDebounced();
 	});
 });

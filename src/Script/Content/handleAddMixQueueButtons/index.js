@@ -7,7 +7,9 @@ export const getQueue = async () =>
 			resolve(res.queue || []);
 		});
 	});
+
 export default async function handleAddMixQueueButtons() {
+	console.log("finding recipe list");
 	const recipeList = await findRecipeList();
 	const queue = await getQueue();
 
@@ -27,12 +29,12 @@ export default async function handleAddMixQueueButtons() {
 		const prependElement = document.createElement("span");
 
 		const titleParentEl = titleElement.parentElement;
-		titleParentEl.insertBefore(prependElement, titleParentEl.firstChild);
 
 		titleParentEl.style.display = "flex";
 		titleParentEl.style.flexDirection = "row";
 		titleParentEl.style.alignItems = "center";
 
+		titleParentEl.insertBefore(prependElement, titleElement);
 		injectReactComponent(
 			prependElement,
 			<EnqueueButton queue={queue} recipe={recipe} />
