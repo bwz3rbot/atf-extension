@@ -26,5 +26,5 @@
 			"js": ["bundle/script/content.js"]
 		}
 	],
-	"permissions": ["storage", "tabs", "webNavigation"]
+	"permissions": ["storage", "webNavigation"]
 }
